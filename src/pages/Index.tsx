@@ -18,7 +18,7 @@ const loveMessages = [
   "Je suis le plus chanceux grâce à toi 🍀",
 ];
 
-const heartEmojis = ["❤️", "💖", "💗", "💓", "💕", "💘", "💝", "💞", "🩷", "❣️"];
+const heartEmojis = ["❤️", "💖", "💗", "💓", "💕", "💘", "💝", "💞", "💟", "❣️"];
 
 const Index = () => {
   const [gameStarted, setGameStarted] = useState(false);
