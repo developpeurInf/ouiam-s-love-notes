@@ -1,17 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const ZAKARIA_PHONE = "212600000000"; // Remplace par ton vrai numéro WhatsApp
-
 const Celebration = () => {
   const [confetti, setConfetti] = useState<Array<{ id: number; left: string; delay: number; emoji: string }>>([]);
-  const [message, setMessage] = useState("");
-
-  const handleSendWhatsApp = () => {
-    if (!message.trim()) return;
-    const url = `https://wa.me/${ZAKARIA_PHONE}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  };
 
   useEffect(() => {
     const items = Array.from({ length: 40 }).map((_, i) => ({
@@ -118,32 +109,6 @@ const Celebration = () => {
           ))}
         </motion.div>
 
-        {/* Message WhatsApp */}
-        <motion.div
-          className="mt-10 bg-card/20 backdrop-blur-sm rounded-3xl px-8 py-6 max-w-md mx-auto border border-primary-foreground/20"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.5 }}
-        >
-          <p className="text-lg font-display text-primary-foreground mb-3">
-            Laisse-moi un petit message 💌
-          </p>
-          <textarea
-            className="w-full rounded-2xl p-4 text-foreground bg-card/90 border border-valentine-pink/30 focus:outline-none focus:ring-2 focus:ring-valentine-pink resize-none font-body"
-            rows={3}
-            placeholder="Écris ton message ici..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <motion.button
-            className="mt-3 w-full py-3 rounded-2xl valentine-gradient text-primary-foreground font-display text-lg shadow-lg"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={handleSendWhatsApp}
-          >
-            Envoyer sur WhatsApp 💬
-          </motion.button>
-        </motion.div>
       </motion.div>
     </div>
   );
