@@ -22,24 +22,26 @@ const heartEmojis = ["❤️", "💖", "💗", "💓", "💕", "💘", "💝", "
 
 const Index = () => {
   const [gameStarted, setGameStarted] = useState(false);
-  const [clickedCount, setClickedCount] = useState(0);
+  const [clickedHearts, setClickedHearts] = useState<Set<number>>(new Set());
   const [currentMessage, setCurrentMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [gameFinished, setGameFinished] = useState(false);
 
   const totalHearts = loveMessages.length;
+  const clickedCount = clickedHearts.size;
 
   const handleHeartClick = (index: number) => {
-    if (clickedCount >= totalHearts) return;
+    if (clickedHearts.has(index) || clickedCount >= totalHearts) return;
 
-    const newCount = clickedCount + 1;
-    setClickedCount(newCount);
+    const newClicked = new Set(clickedHearts);
+    newClicked.add(index);
+    setClickedHearts(newClicked);
     setCurrentMessage(loveMessages[index]);
     setShowMessage(true);
 
     setTimeout(() => setShowMessage(false), 2500);
 
-    if (newCount >= totalHearts) {
+    if (newClicked.size >= totalHearts) {
       setTimeout(() => setGameFinished(true), 3000);
     }
   };
@@ -113,7 +115,7 @@ const Index = () => {
             emoji={emoji}
             index={i}
             onClick={() => handleHeartClick(i)}
-            disabled={clickedCount > i}
+            disabled={clickedHearts.has(i)}
             delay={i * 0.1}
           />
         ))}
