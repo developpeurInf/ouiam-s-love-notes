@@ -47,6 +47,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        valentine: {
+          rose: "hsl(var(--valentine-rose))",
+          pink: "hsl(var(--valentine-pink))",
+          deep: "hsl(var(--valentine-deep))",
+          blush: "hsl(var(--valentine-blush))",
+          gold: "hsl(var(--valentine-gold))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -57,6 +64,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      fontFamily: {
+        display: ['Dancing Script', 'cursive'],
+        body: ['Quicksand', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
